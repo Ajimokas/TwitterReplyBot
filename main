@@ -1,0 +1,31 @@
+
+#  @author - Shalom Ajimoko
+
+
+import tweepy
+
+
+#print ("Hello World")
+#print ("This is my twitter bot")
+
+
+
+CONSUMER_KEY = '8BlUDBcAT923NwwNtAaPuXePf'
+CONSUMER_SECRET = 'GVmiQXZkXSMp9Q7bqrOtU8aLWi0E3AN42Sfjbxr6WtTX7guEvb'
+ACCESS_KEY = '767974580-D1AX11drNf2h2cKPE0uwwnvnts0Cm10uQhCuGFdR'
+ACCESS_SECRET = 'js4eadd3nJHLpn3yIyUCVerqxkZ7tfvJ85aFmggzvhgpg'
+
+
+auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+api = tweepy.API(auth)
+
+
+mentions = api.mentions_timeline()
+
+for mention in mentions:
+    print(str(mention.id) + ' - ' + mention.text)
+    if "hello!" in mention.text.lower():
+         print('hello!')
+    else:
+         print('Did not find hello world')
